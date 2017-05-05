@@ -30,6 +30,10 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-config.php" ]]; then
   echo "Configuring WordPress Stable..."
   noroot wp core config --dbname="${DB_NAME}" --dbuser=wp --dbpass=wp --quiet --extra-php <<PHP
 define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_DISPLAY', false );
+define( 'RKV_DEV_MODE', true );
+define ('JETPACK_DEV_DEBUG', true);
 PHP
 fi
 
@@ -52,7 +56,7 @@ else
 fi
 
 # Delete Hello Dolly
-if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/hello.php" ]]; then
+if [ -n "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/hello.php" ]; then
 
   echo "Deleting Helly Dolly..."
 
@@ -69,7 +73,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins" ]]; then
   mkdir -p ${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins
 
   # copy over the MU plugins folder
-  cp -a "${HOME}/vagrant-assets/_data/mu-plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
+  cp -a "${USER}/vagrant-assets/_data/mu-plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
 fi
 
 # Add my regular plugins
@@ -78,7 +82,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/airplane-mode/airplane-mo
   echo "Adding additional plugins..."
 
   # copy over the MU plugins folder
-  cp -a "${HOME}/vagrant-assets/_data/plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins"
+  cp -a "${USER}/vagrant-assets/_data/plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins"
 fi
 
 cp -f "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf.tmpl" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
