@@ -51,6 +51,15 @@ else
   noroot wp core update --version="${WP_VERSION}"
 fi
 
+# Delete Hello Dolly
+if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/hello.php" ]]; then
+
+  echo "Deleting Helly Dolly..."
+
+  # And delete it.
+  rm "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/hello.php"
+fi
+
 # Add my MU plugins
 if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins" ]]; then
 
@@ -60,7 +69,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins" ]]; then
   mkdir -p ${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins
 
   # copy over the MU plugins folder
-  cp -a "~/vagrant-assets/_data/mu-plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
+  cp -a "${HOME}/vagrant-assets/_data/mu-plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
 fi
 
 # Add my regular plugins
@@ -69,7 +78,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/airplane-mode/airplane-mo
   echo "Adding additional plugins..."
 
   # copy over the MU plugins folder
-  cp -a "~/vagrant-assets/_data/plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins"
+  cp -a "${HOME}/vagrant-assets/_data/plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins"
 fi
 
 cp -f "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf.tmpl" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
