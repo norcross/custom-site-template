@@ -44,11 +44,32 @@ if ! $(noroot wp core is-installed); then
     INSTALL_COMMAND="install"
   fi
 
-  noroot wp core ${INSTALL_COMMAND} --url="${DOMAIN}" --quiet --title="${SITE_TITLE}" --admin_name=admin --admin_email="admin@local.dev" --admin_password="password"
+  noroot wp core ${INSTALL_COMMAND} --url="${DOMAIN}" --quiet --title="${SITE_TITLE}" --admin_name=admin --admin_email="norcrossadmin@gmail.com" --admin_password="password"
 else
   echo "Updating WordPress Stable..."
   cd ${VVV_PATH_TO_SITE}/public_html
   noroot wp core update --version="${WP_VERSION}"
+fi
+
+# Add my MU plugins
+if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins" ]]; then
+
+  echo "Adding MU plugins..."
+
+  # Create my MU plugins folder
+  mkdir -p ${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins
+
+  # copy over the MU plugins folder
+  cp -a "~/vagrant-assets/_data/mu-plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
+fi
+
+# Add my regular plugins
+if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/airplane-mode/airplane-mode.php" ]]; then
+
+  echo "Adding additional plugins..."
+
+  # copy over the MU plugins folder
+  cp -a "~/vagrant-assets/_data/plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins"
 fi
 
 cp -f "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf.tmpl" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
