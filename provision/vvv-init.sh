@@ -55,8 +55,10 @@ else
   noroot wp core update --version="${WP_VERSION}"
 fi
 
+# Some stuff below requires the vagrant-scp plugin
+
 # Delete Hello Dolly
-if [ -n "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/hello.php" ]; then
+if [[ -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/hello.php" ]]; then
 
   echo "Deleting Helly Dolly..."
 
@@ -73,7 +75,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins" ]]; then
   mkdir -p ${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins
 
   # copy over the MU plugins folder
-  cp -a "/provision/resources/mu-plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
+  cp -a "./setup/mu-plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
 fi
 
 # Add my regular plugins
@@ -82,7 +84,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/airplane-mode/airplane-mo
   echo "Adding additional plugins..."
 
   # copy over the MU plugins folder
-  cp -a "/provision/resources/plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins"
+  cp -a "./setup/plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins"
 fi
 
 cp -f "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf.tmpl" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
