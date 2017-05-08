@@ -66,10 +66,20 @@ if [[ -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/hello.php" ]]; then
   rm "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/hello.php"
 fi
 
+# Add my assets folder
+if [[ ! -f "${VVV_PATH_TO_SITE}/assets" ]]; then
+
+  echo "Creating assets folder..."
+
+  # Create my MU plugins folder
+  mkdir -p "${VVV_PATH_TO_SITE}/assets"
+
+fi
+
 # Add my MU plugins folder
 if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins" ]]; then
 
-  echo "Adding MU plugins folder..."
+  echo "Creating MU plugins folder..."
 
   # Create my MU plugins folder
   mkdir -p "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
@@ -82,7 +92,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-debug
   echo "Adding Norcross debug functions..."
 
   # clone the gist
-  git clone "https://gist.github.com/7864205.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
+  git clone "https://gist.github.com/7864205.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/"
 fi
 
 # Create my scratchpad file
