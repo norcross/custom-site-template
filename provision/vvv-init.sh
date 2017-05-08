@@ -66,10 +66,10 @@ if [[ -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/hello.php" ]]; then
   rm "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/hello.php"
 fi
 
-# Add my MU plugins
+# Add my MU plugins folder
 if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins" ]]; then
 
-  echo "Adding MU plugins..."
+  echo "Adding MU plugins folder..."
 
   # Create my MU plugins folder
   mkdir -p ${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins
@@ -78,14 +78,72 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins" ]]; then
   cp -a "/vagrant/setup/mu-plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
 fi
 
-# Add my regular plugins
-if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/airplane-mode/airplane-mode.php" ]]; then
+# Add my debug tools file
+if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-debug-functions.php" ]]; then
 
-  echo "Adding additional plugins..."
+  echo "Adding Norcross debug functions..."
+
+  # clone the gist
+  git clone "https://gist.github.com/7864205.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-debug-functions.php"
+fi
+
+# Create my scratchpad file
+if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-scratchpad.php" ]]; then
+
+  echo "Adding dev scratchpad file..."
+
+  # copy the file from local
+  cp -a "/vagrant/setup/plugins/norcross-scratchpad.php" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-scratchpad.php"
+fi
+
+# Add Airplane Mode
+if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/airplane-mode/airplane-mode.php" ]]; then
+
+  echo "Adding Airplane Mode..."
+
+  # Clone my repo
+  git clone "https://github.com/norcross/airplane-mode.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/airplane-mode"
+
+fi
+
+# Add Query Monitor
+if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/query-monitor/query-monitor.php" ]]; then
+
+  echo "Adding Query Monitor..."
+
+  # Clone my repo
+  git clone "https://github.com/johnbillion/query-monitor.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/query-monitor"
+
+fi
+
+# Add WP Sweep
+if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/wp-sweep/wp-sweep.php" ]]; then
+
+  echo "Adding WP Sweep..."
+
+  # Clone my repo
+  git clone "https://github.com/lesterchan/wp-sweep.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/wp-sweep"
+
+fi
+
+# Add CMB2
+if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/cmb2/index.php" ]]; then
+
+  echo "Adding CMB2..."
+
+  # Clone my repo
+  git clone "https://github.com/CMB2/CMB2.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/cmb2"
+
+fi
+
+# Add my regular plugins
+#if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/airplane-mode/airplane-mode.php" ]]; then
+
+  #echo "Adding additional plugins..."
 
   # copy over the MU plugins folder
-  cp -a "/vagrant/setup/plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins"
-fi
+  #cp -a "/vagrant/setup/plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins"
+#fi
 
 cp -f "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf.tmpl" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
 sed -i "s#{{DOMAINS_HERE}}#${DOMAINS}#" "${VVV_PATH_TO_SITE}/provision/vvv-nginx.conf"
