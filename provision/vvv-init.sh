@@ -82,7 +82,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-debug
   echo "Adding Norcross debug functions..."
 
   # clone the gist
-  git clone "https://gist.github.com/7864205.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-debug-functions.php"
+  git clone "https://gist.github.com/7864205.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
 fi
 
 # Create my scratchpad file
@@ -91,7 +91,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-scrat
   echo "Adding dev scratchpad file..."
 
   # copy the file from local
-  cp -a "/vagrant/setup/plugins/norcross-scratchpad.php" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-scratchpad.php"
+  cp -a "/vagrant/setup/mu-plugins/norcross-scratchpad.php" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-scratchpad.php"
 fi
 
 # Add Airplane Mode
