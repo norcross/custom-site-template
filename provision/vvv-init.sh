@@ -72,10 +72,8 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins" ]]; then
   echo "Adding MU plugins folder..."
 
   # Create my MU plugins folder
-  mkdir -p ${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins
+  mkdir -p "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
 
-  # copy over the MU plugins folder
-  cp -a "/vagrant/setup/mu-plugins/." "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins"
 fi
 
 # Add my debug tools file
