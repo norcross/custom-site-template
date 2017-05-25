@@ -32,6 +32,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-config.php" ]]; then
 define( 'WP_DEBUG', true );
 define( 'WP_DEBUG_LOG', true );
 define( 'WP_DEBUG_DISPLAY', false );
+define( 'SCRIPT_DEBUG', true );
 define( 'RKV_DEV_MODE', true );
 define ('JETPACK_DEV_DEBUG', true);
 PHP
@@ -60,7 +61,7 @@ fi
 # Delete Hello Dolly
 if [[ -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/hello.php" ]]; then
 
-  echo "Deleting Helly Dolly..."
+  echo "Deleting Hello Dolly..."
 
   # And delete it.
   rm "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/hello.php"
