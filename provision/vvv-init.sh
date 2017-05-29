@@ -34,7 +34,7 @@ define( 'WP_DEBUG_LOG', true );
 define( 'WP_DEBUG_DISPLAY', false );
 define( 'SCRIPT_DEBUG', true );
 define( 'RKV_DEV_MODE', true );
-define ('JETPACK_DEV_DEBUG', true);
+define( 'JETPACK_DEV_DEBUG', true );
 PHP
 fi
 
@@ -96,7 +96,16 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-debug
   git clone "https://gist.github.com/7864205.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/"
 fi
 
-# Create my scratchpad file
+# Copy over my API keys file from local
+if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-api-keys.php" ]]; then
+
+  echo "Adding API keys file..."
+
+  # copy the file from local
+  cp -a "/vagrant/setup/mu-plugins/norcross-api-keys.php" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-api-keys.php"
+fi
+
+# Create my scratchpad file from local.
 if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-scratchpad.php" ]]; then
 
   echo "Adding dev scratchpad file..."
