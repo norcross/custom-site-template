@@ -102,7 +102,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-api-k
   echo "Adding API keys file..."
 
   # copy the file from local
-  cp -a "/vagrant/setup/mu-plugins/norcross-api-keys.php" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-api-keys.php"
+  cp -a "/vagrant/config/custom/mu-plugins/norcross-api-keys.php" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-api-keys.php"
 fi
 
 # Create my scratchpad file from local.
@@ -111,7 +111,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-scrat
   echo "Adding dev scratchpad file..."
 
   # copy the file from local
-  cp -a "/vagrant/setup/mu-plugins/norcross-scratchpad.php" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-scratchpad.php"
+  cp -a "/vagrant/config/custom/mu-plugins/norcross-scratchpad.php" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-scratchpad.php"
 fi
 
 # Add Airplane Mode
