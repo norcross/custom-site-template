@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Provision WordPress Stable
 
-DOMAIN=`get_primary_host "${VVV_SITE_NAME}".dev`
+DOMAIN=`get_primary_host "${VVV_SITE_NAME}".test`
 DOMAINS=`get_hosts "${DOMAIN}"`
 SITE_TITLE=`get_config_value 'site_title' "${DOMAIN}"`
 WP_VERSION=`get_config_value 'wp_version' 'latest'`
