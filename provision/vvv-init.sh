@@ -94,6 +94,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-debug
 
   # clone the gist
   git clone "https://gist.github.com/7864205.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/"
+
 fi
 
 # Copy over my API keys file from local
@@ -103,6 +104,7 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-api-k
 
   # copy the file from local
   cp -a "/srv/config/custom/mu-plugins/norcross-api-keys.php" "${VVV_PATH_TO_SITE}/public_html/wp-content/mu-plugins/norcross-api-keys.php"
+
 fi
 
 # Create my scratchpad file from local.
@@ -120,7 +122,10 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/airplane-mode/air
   echo "Adding Airplane Mode..."
 
   # Clone my repo
-  git clone "https://github.com/norcross/airplane-mode.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/airplane-mode"
+  # git clone "https://github.com/norcross/airplane-mode.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/airplane-mode"
+
+  # Install the plugin using WP-CLI
+  noroot wp plugin install airplane-mode
 
 fi
 
@@ -130,7 +135,10 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/query-monitor/que
   echo "Adding Query Monitor..."
 
   # Clone my repo
-  git clone "https://github.com/johnbillion/query-monitor.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/query-monitor"
+  # git clone "https://github.com/johnbillion/query-monitor.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/query-monitor"
+
+  # Install the plugin using WP-CLI
+  noroot wp plugin install query-monitor --activate
 
 fi
 
@@ -140,7 +148,10 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/wp-sweep/wp-sweep
   echo "Adding WP Sweep..."
 
   # Clone my repo
-  git clone "https://github.com/lesterchan/wp-sweep.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/wp-sweep"
+  # git clone "https://github.com/lesterchan/wp-sweep.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/wp-sweep"
+
+  # Install the plugin using WP-CLI
+  noroot wp plugin install wp-sweep --activate
 
 fi
 
@@ -150,7 +161,10 @@ if [[ ! -f "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/cmb2/index.php" ]
   echo "Adding CMB2..."
 
   # Clone my repo
-  git clone "https://github.com/CMB2/CMB2.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/cmb2"
+  # git clone "https://github.com/CMB2/CMB2.git" "${VVV_PATH_TO_SITE}/public_html/wp-content/plugins/cmb2"
+
+  # Install the plugin using WP-CLI
+  noroot wp plugin install cmb2
 
 fi
 
